@@ -1,3 +1,6 @@
+# Unicode for empty box, u"\u25A1"
+# Unicode for black box, u"\u25A0"
+# can double check if Unicodes are true
 board = [
     [X, X, X, X, X],
     [X, X, X, X, X],
