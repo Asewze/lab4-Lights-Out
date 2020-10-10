@@ -1,31 +1,25 @@
 # Unicode for empty box, u"\u25A1"
 # Unicode for black box, u"\u25A0"
 # can double check if Unicodes are true
+from tkinter import *
 import random
 
-board = [
-    [X, X, X, X, X],
-    [X, X, X, X, X],
-    [X, X, X, X, X],
-    [X, X, X, X, X],
-    [X, X, X, X, X]
-]
+def random(board):
+    for BoW in _:
+
+        BoW = random.random()
+        if BoW >= 0.5:
+
+
+def display(board):
+    for i in board:
+        # concatinates indexes with a space
+        print(" ".join(i))
 
 
 def main():
+    board = [["" for a in range(5)] for b in range(5)]
 
-    for board in square:
-        print(board)
-
-
-    def index_to_row(row):
-        row // 5
-
-    def index_to_col(col):
-        col // 5
-
-    index_to_col(input('Please choose a column number (0-4): '))
-    index_to_row(input('Please choose a row number (0-4): '))
 
 
 main()
