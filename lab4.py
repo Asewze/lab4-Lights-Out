@@ -11,6 +11,8 @@ b = u"\u25A1"
 
 SolvedBoard = ['u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"']
 
+global board
+
 board = [
 	b, b, b, b, b,
 	b, b, b, b, b,
@@ -18,21 +20,17 @@ board = [
 	b, b, b, b, b,
 	b, b, b, b, b]
 
+PuzzleSolve = 0
+
 def Main():
+	print("Welcome to 'Lights Out'")
+	print("Try to turn all the lights off!")
 	MakeBoard(board)
 	global PuzzleSolve
-	global cord
-	global column
-	play5()
 	while PuzzleSolve == 0:
 		display(board)
 		userint()
-		global cord
 		play(row, column)
-		global cord
-		print(cord)
-		play2()
-		play4()
 		play5()
 	else:
 		print("You have solved the puzzle!")
@@ -53,311 +51,3472 @@ def display(board):
 	print(board[20],board[21],board[22],board[23],board[24])
 
 def play(row, column):
-	global cord
-	if row == 0 and column == 0:
-		cord = 0
-	elif row == 0 and column == 1:
-		cord = 1
-	elif row == 0 and column == 2:
-		cord = 2
-	elif row == 0 and column == 3:
-		cord = 3
-	elif row == 0 and column == 4:
-		cord = 4
-	elif row == 1 and column == 0:
-		cord = 5
-	elif row == 1 and column == 1:
-		cord = 6
-	elif row == 1 and column == 2:
-		cord = 7
-	elif row == 1 and column == 3:
-		cord = 8
-	elif row == 1 and column == 4:
-		cord = 9
-	elif row == 2 and column == 0:
-		cord = 10
-	elif row == 2 and column == 1:
-		cord = 11
-	elif row == 2 and column == 2:
-		cord = 12
-	elif row == 2 and column == 3:
-		cord = 13
-	elif row == 2 and column == 4:
-		cord = 14
-	elif row == 3 and column == 0:
-		cord = 15
-	elif row == 3 and column == 1:
-		cord = 16
-	elif row == 3 and column == 2:
-		cord = 17
-	elif row == 3 and column == 3:
-		cord = 18
-	elif row == 3 and column == 4:
-		cord = 19
-	elif row == 4 and column == 0:
-		cord = 20
-	elif row == 4 and column == 1:
-		cord = 21
-	elif row == 4 and column == 2:
-		cord = 22
-	elif row == 4 and column == 3:
-		cord = 23
-	elif row == 4 and column == 4:
-		cord = 24
-	return cord
-
-def play2():
-	global cord
-	if cord == "b":
-		board.pop(cord)
-		board.insert(cord, "w")
-	elif cord == "w":
-		board.pop(cord)
-		board.insert(cord, "b")
-
-def play3():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
+	if row == '0' and column == '0':
+		if board[0] == b:
+			board.pop(0)
+			board.insert(0, w)
+			if board[5] == b:
+				board.pop(5)
+				board.insert(5, w)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					play5()
+			else:
+				board.pop(5)
+				board.insert(5, b)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					play5()
+		else:
+			board.pop(0)
+			board.insert(0, b)
+			if board[5] == b:
+				board.pop(5)
+				board.insert(5, w)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					play5()
+			else:
+				board.pop(5)
+				board.insert(5, b)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					play5()
+	elif row == '0' and column == '1':
+		if board[1] == b:
+			board.pop(1)
+			board.insert(1, w)
+			if board[6] == b:
+				board.pop(6)
+				board.insert(6, w)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+			else:
+				board.pop(6)
+				board.insert(6, b)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+		else:
+			board.pop(1)
+			board.insert(1, b)
+			if board[6] == b:
+				board.pop(6)
+				board.insert(6, w)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+			else:
+				board.pop(6)
+				board.insert(6, b)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+	elif row == '0' and column == '2':
+		if board[2] == b:
+			board.pop(2)
+			board.insert(2, w)
+			if board[7] == b:
+				board.pop(7)
+				board.insert(7, w)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+			else:
+				board.pop(7)
+				board.insert(7, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+		else:
+			board.pop(2)
+			board.insert(2, b)
+			if board[7] == b:
+				board.pop(7)
+				board.insert(7, w)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+			else:
+				board.pop(7)
+				board.insert(7, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[1] == b:
+						board.pop(1)
+						board.insert(1, w)
+						play5()
+					else:
+						board.pop(1)
+						board.insert(1, b)
+						play5()
+	elif row == '0' and column == '3':
+		if board[3] == b:
+			board.pop(3)
+			board.insert(3, w)
+			if board[8] == b:
+				board.pop(8)
+				board.insert(8, w)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+			else:
+				board.pop(8)
+				board.insert(8, b)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+		else:
+			board.pop(3)
+			board.insert(3, b)
+			if board[8] == b:
+				board.pop(8)
+				board.insert(8, w)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+			else:
+				board.pop(8)
+				board.insert(8, b)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[2] == b:
+						board.pop(2)
+						board.insert(2, w)
+						play5()
+					else:
+						board.pop(2)
+						board.insert(2, b)
+						play5()
+	elif row == '0' and column == '4':
+		if board[4] == b:
+			board.pop(4)
+			board.insert(4, w)
+			if board[9] == b:
+				board.pop(9)
+				board.insert(9, w)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					play5()
+			else:
+				board.pop(9)
+				board.insert(9, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					play5()
+		else:
+			board.pop(4)
+			board.insert(4, b)
+			if board[9] == b:
+				board.pop(9)
+				board.insert(9, w)
+				if board[3] == b:
+					board.pop(3)
+					board.pop(3, w)
+					play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					play5()
+			else:
+				board.pop(9)
+				board.insert(9, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					play5()
+	elif row == '1' and column == '0':
+		if board[5] == b:
+			board.pop(5)
+			board.insert(5, w)
+			if board[6] == b:
+				board.pop(6)
+				board.insert(6, w)
+				if board[10] == b:
+					board.pop(10)
+					board.insert(10, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(10)
+					board.insert(10, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+			else:
+				board.pop(6)
+				board.insert(6, b)
+				if board[10] == b:
+					board.pop(10)
+					board.insert(10, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(10)
+					board.insert(10, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+		else:
+			board.pop(5)
+			board.insert(5, b)
+			if board[6] == b:
+				board.pop(6)
+				board.insert(6, w)
+				if board[10] == b:
+					board.pop(10)
+					board.insert(10, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(10)
+					board.insert(10, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+			else:
+				board.pop(6)
+				board.insert(6, b)
+				if board[10] == b:
+					board.pop(10)
+					board.insert(10, w)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+				else:
+					board.pop(10)
+					board.insert(10, b)
+					if board[0] == b:
+						board.pop(0)
+						board.insert(0, w)
+						play5()
+					else:
+						board.pop(0)
+						board.insert(0, b)
+						play5()
+	elif row == '1' and column == '1':
+		if board[6] == b:
+			board.pop(6)
+			board.insert(6, w)
+			if board[11] == b:
+				board.pop(11)
+				board.insert(11, w)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+			else:
+				board.pop(11)
+				board.insert(11, b)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+		else:
+			board.pop(6)
+			board.insert(6, b)
+			if board[11] == b:
+				board.pop(11)
+				board.insert(11, w)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+			else:
+				board.pop(11)
+				board.insert(11, b)
+				if board[1] == b:
+					board.pop(1)
+					board.insert(1, w)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+				else:
+					board.pop(1)
+					board.insert(1, b)
+					if board[7] == b:
+						board.pop(7)
+						board.insert(7, w)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+					else:
+						board.pop(7)
+						board.insert(7, b)
+						if board[5] == b:
+							board.pop(5)
+							board.insert(5, w)
+							play5()
+						else:
+							board.pop(5)
+							board.insert(5, b)
+							play5()
+	elif row == '1' and column == '2':
+		if board[7] == b:
+			board.pop(7)
+			board.insert(7, w)
+			if board[12] == b:
+				board.pop(12)
+				board.insert(12, w)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+			else:
+				board.pop(12)
+				board.insert(12, b)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+		else:
+			board.pop(7)
+			board.insert(7, b)
+			if board[12] == b:
+				board.pop(12)
+				board.insert(12, w)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+			else:
+				board.pop(12)
+				board.insert(12, b)
+				if board[2] == b:
+					board.pop(2)
+					board.insert(2, w)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+				else:
+					board.pop(2)
+					board.insert(2, b)
+					if board[8] == b:
+						board.pop(8)
+						board.insert(8, w)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+					else:
+						board.pop(8)
+						board.insert(8, b)
+						if board[6] == b:
+							board.pop(6)
+							board.insert(6, w)
+							play5()
+						else:
+							board.pop(6)
+							board.insert(6, b)
+							play5()
+	elif row == '1' and column == '3':
+		if board[8] == b:
+			board.pop(8)
+			board.insert(8, w)
+			if board[13] == b:
+				board.pop(13)
+				board.insert(13, w)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+			else:
+				board.pop(13)
+				board.insert(13, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+		else:
+			board.pop(8)
+			board.insert(8, b)
+			if board[13] == b:
+				board.pop(13)
+				board.insert(13, w)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+			else:
+				board.pop(13)
+				board.insert(13, b)
+				if board[3] == b:
+					board.pop(3)
+					board.insert(3, w)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+				else:
+					board.pop(3)
+					board.insert(3, b)
+					if board[9] == b:
+						board.pop(9)
+						board.insert(9, w)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+					else:
+						board.pop(9)
+						board.insert(9, b)
+						if board[7] == b:
+							board.pop(7)
+							board.insert(7, w)
+							play5()
+						else:
+							board.pop(7)
+							board.insert(7, b)
+							play5()
+	elif row == '1' and column == '4':
+		if board[9] == b:
+			board.pop(9)
+			board.insert(9, w)
+			if board[8] == b:
+				board.pop(8)
+				board.insert(8, w)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+			else:
+				board.pop(8)
+				board.insert(8, b)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+		else:
+			board.pop(9)
+			board.insert(9, b)
+			if board[8] == b:
+				board.pop(8)
+				board.insert(8, w)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+			else:
+				board.pop(8)
+				board.insert(8, b)
+				if board[4] == b:
+					board.pop(4)
+					board.insert(4, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+				else:
+					board.pop(4)
+					board.insert(4, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						play5()
+	elif row == '2' and column == '0':
+		if board[10] == b:
+			board.pop(10)
+			board.insert(10, w)
+			if board[11] == b:
+				board.pop(11)
+				board.insert(11, w)
+				if board[15] == b:
+					board.pop(15)
+					board.insert(15, w)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+				else:
+					board.pop(15)
+					board.insert(15, b)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+			else:
+				board.pop(11)
+				board.insert(11, b)
+				if board[15] == b:
+					board.pop(15)
+					board.insert(15, w)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+				else:
+					board.pop(15)
+					board.insert(15, b)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+		else:
+			board.pop(10)
+			board.insert(10, b)
+			if board[11] == b:
+				board.pop(11)
+				board.insert(11, w)
+				if board[15] == b:
+					board.pop(15)
+					board.insert(15, w)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+				else:
+					board.pop(15)
+					board.insert(15, b)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+			else:
+				board.pop(11)
+				board.insert(11, b)
+				if board[15] == b:
+					board.pop(15)
+					board.insert(15, w)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+				else:
+					board.pop(15)
+					board.insert(15, b)
+					if board[5] == b:
+						board.pop(5)
+						board.insert(5, w)
+						play5()
+					else:
+						board.pop(5)
+						board.insert(5, b)
+						play5()
+	elif row == '2' and column == '1':
+		if board[11] == b:
+			board.pop(11)
+			board.insert(11, w)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[6] == b:
+					board.pop(6)
+					board.insert(6, w)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+				else:
+					board.pop(6)
+					board.insert(6, b)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[6] == b:
+					board.pop(6)
+					board.insert(6, w)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+				else:
+					board.pop(6)
+					board.insert(6, b)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+		else:
+			board.pop(11)
+			board.insert(11, b)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[6] == b:
+					board.pop(6)
+					board.insert(6, w)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+				else:
+					board.pop(6)
+					board.insert(6, b)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[6] == b:
+					board.pop(6)
+					board.insert(6, w)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+				else:
+					board.pop(6)
+					board.insert(6, b)
+					if board[12] == b:
+						board.pop(12)
+						board.insert(12, w)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+					else:
+						board.pop(12)
+						board.insert(12, b)
+						if board[10] == b:
+							board.pop(10)
+							board.insert(10, w)
+							play5()
+						else:
+							board.pop(10)
+							board.insert(10, b)
+							play5()
+	elif row == '2' and column == '2':
+		if board[12] == b:
+			board.pop(12)
+			board.insert(12, w)
+			if board[17] == b:
+				board.pop(17)
+				board.insert(17, w)
+				if board[7] == b:
+					board.pop(7)
+					board.insert(7, w)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+				else:
+					board.pop(7)
+					board.insert(7, b)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+			else:
+				board.pop(17)
+				board.insert(17, b)
+				if board[7] == b:
+					board.pop(7)
+					board.insert(7, w)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+				else:
+					board.pop(7)
+					board.insert(7, b)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+		else:
+			board.pop(12)
+			board.insert(12, b)
+			if board[17] == b:
+				board.pop(17)
+				board.insert(17, w)
+				if board[7] == b:
+					board.pop(7)
+					board.insert(7, w)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+				else:
+					board.pop(7)
+					board.insert(7, b)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+			else:
+				board.pop(17)
+				board.insert(17, b)
+				if board[7] == b:
+					board.pop(7)
+					board.insert(7, w)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+				else:
+					board.pop(7)
+					board.insert(7, b)
+					if board[13] == b:
+						board.pop(13)
+						board.insert(13, w)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+					else:
+						board.pop(13)
+						board.insert(13, b)
+						if board[11] == b:
+							board.pop(11)
+							board.insert(11, w)
+							play5()
+						else:
+							board.pop(11)
+							board.insert(11, b)
+							play5()
+	elif row == '2' and column == '3':
+		if board[13] == b:
+			board.pop(13)
+			board.insert(13, w)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[8] == b:
+					board.pop(8)
+					board.insert(8, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+				else:
+					board.pop(8)
+					board.insert(8, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[8] == b:
+					board.pop(8)
+					board.insert(8, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+				else:
+					board.pop(8)
+					board.insert(8, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+		else:
+			board.pop(13)
+			board.insert(13, b)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[8] == b:
+					board.pop(8)
+					board.insert(8, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+				else:
+					board.pop(8)
+					board.insert(8, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[8] == b:
+					board.pop(8)
+					board.insert(8, w)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+				else:
+					board.pop(8)
+					board.insert(8, b)
+					if board[14] == b:
+						board.pop(14)
+						board.insert(14, w)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+					else:
+						board.pop(14)
+						board.insert(14, b)
+						if board[12] == b:
+							board.pop(12)
+							board.insert(12, w)
+							play5()
+						else:
+							board.pop(12)
+							board.insert(12, b)
+							play5()
+	elif row == '2' and column == '4':
+		if board[14] == b:
+			board.pop(14)
+			board.insert(14, w)
+			if board[13] == b:
+				board.pop(13)
+				board.insert(13, w)
+				if board[9] == b:
+					board.pop(9)
+					board.insert(9, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+				else:
+					board.pop(9)
+					board.insert(9, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+			else:
+				board.pop(13)
+				board.insert(13, b)
+				if board[9] == b:
+					board.pop(9)
+					board.insert(9, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+				else:
+					board.pop(9)
+					board.insert(9, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+		else:
+			board.pop(14)
+			board.insert(14, b)
+			if board[13] == b:
+				board.pop(13)
+				board.insert(13, w)
+				if board[9] == b:
+					board.pop(9)
+					board.insert(9, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+				else:
+					board.pop(9)
+					board.insert(9, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+			else:
+				board.pop(13)
+				board.insert(13, b)
+				if board[9] == b:
+					board.pop(9)
+					board.insert(9, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+				else:
+					board.pop(9)
+					board.insert(9, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						play5()
+	elif row == '3' and column == '0':
+		if board[15] == b:
+			board.pop(15)
+			board.insert(15, w)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[20] == b:
+					board.pop(20)
+					board.insert(20, w)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+				else:
+					board.pop(20)
+					board.insert(20, b)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[20] == b:
+					board.pop(20)
+					board.insert(20, w)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+				else:
+					board.pop(20)
+					board.insert(20, b)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+		else:
+			board.pop(15)
+			board.insert(15, b)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[20] == b:
+					board.pop(20)
+					board.insert(20, w)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+				else:
+					board.pop(20)
+					board.insert(20, b)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[20] == b:
+					board.pop(20)
+					board.insert(10, w)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+				else:
+					board.pop(20)
+					board.insert(20, b)
+					if board[10] == b:
+						board.pop(10)
+						board.insert(10, w)
+						play5()
+					else:
+						board.pop(10)
+						board.insert(10, b)
+						play5()
+	elif row == '3' and column == '1':
+		if board[16] == b:
+			board.pop(16)
+			board.insert(16, w)
+			if board[21] == b:
+				board.pop(21)
+				board.insert(21, w)
+				if board[11] == b:
+					board.pop(11)
+					board.insert(11, w)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+				else:
+					board.pop(11)
+					board.insert(11, b)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+			else:
+				board.pop(21)
+				board.insert(21, b)
+				if board[11] == b:
+					board.pop(11)
+					board.insert(11, w)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+				else:
+					board.pop(11)
+					board.insert(11, b)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+		else:
+			board.pop(16)
+			board.insert(16, b)
+			if board[21] == b:
+				board.pop(21)
+				board.insert(21, w)
+				if board[11] == b:
+					board.pop(11)
+					board.insert(11, w)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+				else:
+					board.pop(11)
+					board.insert(11, b)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+			else:
+				board.pop(21)
+				board.insert(21, b)
+				if board[11] == b:
+					board.pop(11)
+					board.insert(11, w)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+				else:
+					board.pop(11)
+					board.insert(11, b)
+					if board[17] == b:
+						board.pop(17)
+						board.insert(17, w)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+					else:
+						board.pop(17)
+						board.insert(17, b)
+						if board[15] == b:
+							board.pop(15)
+							board.insert(15, w)
+							play5()
+						else:
+							board.pop(15)
+							board.insert(15, b)
+							play5()
+	elif row == '3' and column == '2':
+		if board[17] == b:
+			board.pop(17)
+			board.insert(17, w)
+			if board[22] == b:
+				board.pop(22)
+				board.insert(22, w)
+				if board[12] == b:
+					board.pop(12)
+					board.insert(12, w)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+				else:
+					board.pop(12)
+					board.insert(12, b)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+			else:
+				board.pop(22)
+				board.insert(22, b)
+				if board[12] == b:
+					board.pop(12)
+					board.insert(12, w)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+				else:
+					board.pop(12)
+					board.insert(12, b)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+		else:
+			board.pop(17)
+			board.insert(17, b)
+			if board[22] == b:
+				board.pop(22)
+				board.insert(22, w)
+				if board[12] == b:
+					board.pop(12)
+					board.insert(12, w)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+				else:
+					board.pop(12)
+					board.insert(12, b)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+			else:
+				board.pop(22)
+				board.insert(22, b)
+				if board[12] == b:
+					board.pop(12)
+					board.insert(12, w)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+				else:
+					board.pop(12)
+					board.insert(12, b)
+					if board[18] == b:
+						board.pop(18)
+						board.insert(18, w)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+					else:
+						board.pop(18)
+						board.insert(18, b)
+						if board[16] == b:
+							board.pop(16)
+							board.insert(16, w)
+							play5()
+						else:
+							board.pop(16)
+							board.insert(16, b)
+							play5()
+	elif row == '3' and column == '3':
+		if board[18] == b:
+			board.pop(18)
+			board.insert(18, w)
+			if board[23] == b:
+				board.pop(23)
+				board.insert(23, w)
+				if board[13] == b:
+					board.pop(13)
+					board.insert(13, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+				else:
+					board.pop(13)
+					board.insert(13, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+			else:
+				board.pop(23)
+				board.insert(23, b)
+				if board[13] == b:
+					board.pop(13)
+					board.insert(13, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+				else:
+					board.pop(13)
+					board.insert(13, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+		else:
+			board.pop(18)
+			board.insert(18, b)
+			if board[23] == b:
+				board.pop(23)
+				board.insert(23, w)
+				if board[13] == b:
+					board.pop(13)
+					board.insert(13, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+				else:
+					board.pop(13)
+					board.insert(13, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+			else:
+				board.pop(23)
+				board.insert(23, b)
+				if board[13] == b:
+					board.pop(13)
+					board.insert(13, w)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+				else:
+					board.pop(13)
+					board.insert(13, b)
+					if board[19] == b:
+						board.pop(19)
+						board.insert(19, w)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+					else:
+						board.pop(19)
+						board.insert(19, b)
+						if board[17] == b:
+							board.pop(17)
+							board.insert(17, w)
+							play5()
+						else:
+							board.pop(17)
+							board.insert(17, b)
+							play5()
+	elif row == '3' and column == '4':
+		if board[19] == b:
+			board.pop(19)
+			board.insert(19, w)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[14] == b:
+					board.pop(14)
+					board.insert(14, w)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+				else:
+					board.pop(14)
+					board.insert(14, b)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[14] == b:
+					board.pop(14)
+					board.insert(14, w)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+				else:
+					board.pop(14)
+					board.insert(14, b)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+		else:
+			board.pop(19)
+			board.insert(19, b)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[14] == b:
+					board.pop(14)
+					board.insert(14, w)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+				else:
+					board.pop(14)
+					board.insert(14, b)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[14] == b:
+					board.pop(14)
+					board.insert(14, w)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+				else:
+					board.pop(14)
+					board.insert(14, b)
+					if board[24] == b:
+						board.pop(24)
+						board.insert(24, w)
+						play5()
+					else:
+						board.pop(24)
+						board.insert(24, b)
+						play5()
+	elif row == '4' and column == '0':
+		if board[20] == b:
+			board.pop(20)
+			board.insert(20, w)
+			if board[15] == b:
+				board.pop(15)
+				board.insert(15, w)
+				if board[21] == b:
+					board.pop(21)
+					board.insert(21, w)
+					play5()
+				else:
+					board.pop(21)
+					board.insert(21, b)
+					play5()
+			else:
+				board.pop(15)
+				board.insert(15, b)
+				if board[21] == b:
+					board.pop(21)
+					board.insert(21, w)
+					play5()
+				else:
+					board.pop(21)
+					board.insert(21, b)
+					play5()
+		else:
+			board.pop(20)
+			board.insert(20, b)
+			if board[15] == b:
+				board.pop(15)
+				board.insert(15, w)
+				if board[21] == b:
+					board.pop(21)
+					board.insert(21, w)
+					play5()
+				else:
+					board.pop(21)
+					board.insert(21, b)
+					play5()
+			else:
+				board.pop(15)
+				board.insert(15, b)
+				if board[21] == b:
+					board.pop(21)
+					board.insert(21, w)
+					play5()
+				else:
+					board.pop(21)
+					board.insert(21, b)
+					play5()
+	elif row == '4' and column == '1':
+		if board[21] == b:
+			board.pop(21)
+			board.insert(21, w)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[22] == b:
+					board.pop(22)
+					board.insert(22, w)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+				else:
+					board.pop(22)
+					board.insert(22, b)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[22] == b:
+					board.pop(22)
+					board.insert(22, w)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+				else:
+					board.pop(22)
+					board.insert(22, b)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+		else:
+			board.pop(21)
+			board.insert(21, b)
+			if board[16] == b:
+				board.pop(16)
+				board.insert(16, w)
+				if board[22] == b:
+					board.pop(22)
+					board.insert(22, w)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+				else:
+					board.pop(22)
+					board.insert(22, b)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+			else:
+				board.pop(16)
+				board.insert(16, b)
+				if board[22] == b:
+					board.pop(22)
+					board.insert(22, w)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+				else:
+					board.pop(22)
+					board.insert(22, b)
+					if board[20] == b:
+						board.pop(20)
+						board.insert(20, w)
+						play5()
+					else:
+						board.pop(20)
+						board.insert(20, b)
+						play5()
+	elif row == '4' and column == '2':
+		if board[22] == b:
+			board.pop(22)
+			board.insert(22, w)
+			if board[17] == b:
+				board.pop(17)
+				board.insert(17, w)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+			else:
+				board.pop(17)
+				board.insert(17, b)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+		else:
+			board.pop(22)
+			board.insert(22, b)
+			if board[17] == b:
+				board.pop(17)
+				board.insert(17, w)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+			else:
+				board.pop(17)
+				board.insert(17, b)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					if board[21] == b:
+						board.pop(21)
+						board.insert(21, w)
+						play5()
+					else:
+						board.pop(21)
+						board.insert(21, b)
+						play5()
+	elif row == '4' and column == '3':
+		if board[23] == b:
+			board.pop(23)
+			board.insert(23, w)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[24] == b:
+					board.pop(24)
+					board.insert(24, w)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+				else:
+					board.pop(24)
+					board.insert(24, b)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[24] == b:
+					board.pop(24)
+					board.insert(24, w)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+				else:
+					board.pop(24)
+					board.insert(24, b)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+		else:
+			board.pop(23)
+			board.insert(23, b)
+			if board[18] == b:
+				board.pop(18)
+				board.insert(18, w)
+				if board[24] == b:
+					board.pop(24)
+					board.insert(24, w)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+				else:
+					board.pop(24)
+					board.insert(24, b)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+			else:
+				board.pop(18)
+				board.insert(18, b)
+				if board[24] == b:
+					board.pop(24)
+					board.insert(24, w)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+				else:
+					board.pop(24)
+					board.insert(24, b)
+					if board[22] == b:
+						board.pop(22)
+						board.insert(22, w)
+						play5()
+					else:
+						board.pop(22)
+						board.insert(22, b)
+						play5()
+	elif row == '4' and column == '4':
+		if board[24] == b:
+			board.pop(24)
+			board.insert(24, w)
+			if board[19] == b:
+				board.pop(19)
+				board.insert(19, w)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					play5()
+			else:
+				board.pop(19)
+				board.insert(19, b)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					play5()
+		else:
+			board.pop(24)
+			board.insert(24, b)
+			if board[19] == b:
+				board.pop(19)
+				board.insert(19, w)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					play5()
+			else:
+				board.pop(19)
+				board.insert(19, b)
+				if board[23] == b:
+					board.pop(23)
+					board.insert(23, w)
+					play5()
+				else:
+					board.pop(23)
+					board.insert(23, b)
+					play5()
 #needs to be last play	
 def play5():
 	if board != SolvedBoard:
 		global PuzzleSolve
 		PuzzleSolve = 0
 
-def play4():
-	global cord
-	if cord == 5 or cord == 10 or cord == 15:
-		play6()
-	else:
-		play7()
-
-def play6():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-		play5()
-
-def play7():
-	global cord
-	if cord == 9 or cord == 14 or cord == 19:
-		play8()
-	else:
-		play9()
-
-def play8():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
-
-def play9():
-	global cord
-	if cord == 1 or cord == 2 or cord == 3:
-		play10()
-	else:
-		play11()
-
-def play10():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
-
-def play11():
-	global cord
-	if cord == 21 or cord == 22 or cord == 23:
-		play12()
-	else:
-		play13()
-
-def play12():
-	global cord
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
-
-def play13():
-	global cord
-	if cord == 0:
-		play14()
-	else:
-		play15()
-
-def play14():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-		play5()
-
-def play15():
-	global cord
-	if cord == 4:
-		play16()
-	else:
-		play17()
-
-def play16():
-	global cord
-	if cord + 5 == "b":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "w")
-	if cord + 5 == "w":
-		board.pop(cord + 5)
-		board.insert(cord + 5, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
-
-def play17():
-	global cord
-	if cord == 20:
-		play18()
-	else:
-		play19()
-
-def play18():
-	global cord
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord + 1 == "b":
-		board.pop(cord + 1)
-		board.pop(cord + 1, "w")
-	if cord + 1 == "w":
-		board.pop(cord + 1)
-		board.insert(cord + 1, "b")
-		play5()
-
-def play19():
-	global cord
-	if cord == 24:
-		play20()
-	else:
-		play3()
-
-def play20():
-	global cord
-	if cord - 5 == "b":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "w")
-	if cord - 5 == "w":
-		board.pop(cord - 5)
-		board.insert(cord - 5, "b")
-	if cord - 1 == "b":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "w")
-	if cord - 1 == "w":
-		board.pop(cord - 1)
-		board.insert(cord - 1, "b")
-		play5()
-
 def userint():
-	print("welcome to 'Lights Out!'")
 	print("Type the row you would like to select from 0 to 4")
 	print("Example: 1")
 	print("Then press 'ENTER' to continue")
