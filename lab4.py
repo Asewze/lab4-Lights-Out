@@ -1,6 +1,12 @@
 # Unicode for empty box, u"\u25A0"
 # Unicode for black box, u"\u25A1"
 # can double check if Unicodes are true
+# We import Math to use fuctions for our code
+# imported random to randomize our fuction when needed
+# w mean white for tile. 
+# b means black for tile.
+# SolveBoard is summoned by play 5 if checked and ends while loop. 
+
 from tkinter import *
 import random
 import math
@@ -13,6 +19,7 @@ SolvedBoard = ['u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u25A1"','u"\u
 
 global board
 
+# This what the board starts out as before it is randomized. 
 board = [
 	b, b, b, b, b,
 	b, b, b, b, b,
@@ -22,19 +29,22 @@ board = [
 
 PuzzleSolve = 0
 
+# This main function welcomes the player to the interface and displays to player what their goal is and tryign to do
+# Once the system is done with a series of  "if" statements based on user input then it runs "play 5". 
 def Main():
 	print("Welcome to 'Lights Out'")
 	print("Try to turn all the lights off!")
 	MakeBoard(board)
 	global PuzzleSolve
 	while PuzzleSolve == 0:
+            # This displays each change made by the users input
 		display(board)
 		userint()
 		play(row, column)
 		play5()
 	else:
 		print("You have solved the puzzle!")
-		
+# Randomizes the board 
 def MakeBoard(board):
 	for i in range(len(board)):
 		dec = random.random()
@@ -43,6 +53,7 @@ def MakeBoard(board):
 		else:
 			board[i] = w
 
+# Prints lists in 5x5 board 
 def display(board):
 	print(board[0],board[1],board[2],board[3],board[4])
 	print(board[5],board[6],board[7],board[8],board[9])
@@ -50,6 +61,8 @@ def display(board):
 	print(board[15],board[16],board[17],board[18],board[19])
 	print(board[20],board[21],board[22],board[23],board[24])
 
+# modifies the board based on user input.
+# Includes every possiblity for both black and white.
 def play(row, column):
 	if row == '0' and column == '0':
 		if board[0] == b:
@@ -3510,12 +3523,14 @@ def play(row, column):
 					board.pop(23)
 					board.insert(23, b)
 					play5()
-#needs to be last play	
+#needs to be last play
+# This will check if board is solved.
 def play5():
 	if board != SolvedBoard:
 		global PuzzleSolve
 		PuzzleSolve = 0
 
+# The input from user will decide what row and column that the program will run.
 def userint():
 	print("Type the row you would like to select from 0 to 4")
 	print("Example: 1")
